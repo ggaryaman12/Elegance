@@ -58,7 +58,14 @@ export default async function OrderPage({
           <Card className="p-6 lg:col-span-2">
             <div className="text-sm font-semibold">Items</div>
             <div className="mt-4 divide-y divide-border">
-              {order.items.map((i) => (
+              {order.items.map(
+                (i: {
+                  id: string;
+                  productTitle: string;
+                  colorName: string;
+                  quantity: number;
+                  lineTotalPaise: number;
+                }) => (
                 <div key={i.id} className="py-4">
                   <div className="flex items-start justify-between gap-4">
                     <div>

@@ -122,27 +122,29 @@ export default async function AdminProductDetailsPage({
             {product.colors.length === 0 ? (
               <div className="text-sm text-mutedForeground">No colors yet.</div>
             ) : (
-              product.colors.map((c) => (
-                <div
-                  key={c.id}
-                  className="flex items-center justify-between rounded-xl border border-border px-3 py-2"
-                >
-                  <div className="flex items-center gap-2 text-sm">
-                    <span
-                      className="h-3 w-3 rounded-full border border-border"
-                      style={{ background: c.colorHex ?? "transparent" }}
-                    />
-                    {c.colorName}
+              product.colors.map(
+                (c: { id: string; colorName: string; colorHex: string | null }) => (
+                  <div
+                    key={c.id}
+                    className="flex items-center justify-between rounded-xl border border-border px-3 py-2"
+                  >
+                    <div className="flex items-center gap-2 text-sm">
+                      <span
+                        className="h-3 w-3 rounded-full border border-border"
+                        style={{ background: c.colorHex ?? "transparent" }}
+                      />
+                      {c.colorName}
+                    </div>
+                    <form action={deleteProductColor}>
+                      <input type="hidden" name="id" value={c.id} />
+                      <input type="hidden" name="productId" value={product.id} />
+                      <Button type="submit" variant="ghost">
+                        Delete
+                      </Button>
+                    </form>
                   </div>
-                  <form action={deleteProductColor}>
-                    <input type="hidden" name="id" value={c.id} />
-                    <input type="hidden" name="productId" value={product.id} />
-                    <Button type="submit" variant="ghost">
-                      Delete
-                    </Button>
-                  </form>
-                </div>
-              ))
+                )
+              )
             )}
           </div>
         </Card>
@@ -170,21 +172,23 @@ export default async function AdminProductDetailsPage({
             {product.images.length === 0 ? (
               <div className="text-sm text-mutedForeground">No images yet.</div>
             ) : (
-              product.images.map((img) => (
-                <div
-                  key={img.id}
-                  className="flex items-center justify-between rounded-xl border border-border px-3 py-2"
-                >
-                  <div className="truncate text-sm">{img.alt || img.imageUrl}</div>
-                  <form action={deleteProductImage}>
-                    <input type="hidden" name="id" value={img.id} />
-                    <input type="hidden" name="productId" value={product.id} />
-                    <Button type="submit" variant="ghost">
-                      Delete
-                    </Button>
-                  </form>
-                </div>
-              ))
+              product.images.map(
+                (img: { id: string; imageUrl: string; alt: string }) => (
+                  <div
+                    key={img.id}
+                    className="flex items-center justify-between rounded-xl border border-border px-3 py-2"
+                  >
+                    <div className="truncate text-sm">{img.alt || img.imageUrl}</div>
+                    <form action={deleteProductImage}>
+                      <input type="hidden" name="id" value={img.id} />
+                      <input type="hidden" name="productId" value={product.id} />
+                      <Button type="submit" variant="ghost">
+                        Delete
+                      </Button>
+                    </form>
+                  </div>
+                )
+              )
             )}
           </div>
         </Card>

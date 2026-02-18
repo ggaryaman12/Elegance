@@ -13,14 +13,13 @@ export function Marquee({
   className?: string;
   speed?: number;
 }) {
-  const display = items.filter(Boolean);
-  if (display.length === 0) return null;
-
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const setRef = React.useRef<HTMLDivElement | null>(null);
+  const display = items.filter(Boolean);
   const [repeat, setRepeat] = React.useState(display.length === 1 ? 8 : 1);
 
   React.useLayoutEffect(() => {
+    if (display.length === 0) return;
     const container = containerRef.current;
     const set = setRef.current;
     if (!container || !set) return;
@@ -38,6 +37,8 @@ export function Marquee({
     const next = Math.min(24, Math.max(repeat, factor));
     if (next !== repeat) setRepeat(next);
   }, [display.length, repeat]);
+
+  if (display.length === 0) return null;
 
   const base = Array.from({ length: repeat }, () => display).flat();
 
