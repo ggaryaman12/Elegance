@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="lapel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f2937"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <g opacity="0.18">
+    <circle cx="180" cy="160" r="120" fill="#93c5fd"/>
+    <circle cx="1020" cy="740" r="170" fill="#a78bfa"/>
+  </g>
+  <g transform="translate(280,110)">
+    <rect x="150" y="0" width="340" height="120" rx="36" fill="#0f172a" opacity="0.65"/>
+    <path d="M60,240 C120,120 210,60 320,60 C430,60 520,120 580,240 L540,290 C500,210 425,170 320,170 C215,170 140,210 100,290 Z" fill="#0f172a" opacity="0.75"/>
+    <path d="M120,280 L240,180 L320,290 L400,180 L520,280 L520,700 C520,740 488,772 448,772 L192,772 C152,772 120,740 120,700 Z" fill="#0b1220"/>
+    <path d="M240,180 L320,290 L400,180 L470,260 L390,320 L320,250 L250,320 L170,260 Z" fill="url(#lapel)" opacity="0.95"/>
+    <rect x="275" y="350" width="90" height="260" rx="18" fill="#0f172a" opacity="0.9"/>
+    <circle cx="320" cy="420" r="8" fill="#94a3b8" opacity="0.9"/>
+    <circle cx="320" cy="480" r="8" fill="#94a3b8" opacity="0.9"/>
+    <circle cx="320" cy="540" r="8" fill="#94a3b8" opacity="0.9"/>
+  </g>
+  <text x="60" y="840" fill="#e5e7eb" opacity="0.7" font-family="ui-sans-serif, system-ui" font-size="28">Elegance by Neha — Placeholder</text>
+</svg>
+

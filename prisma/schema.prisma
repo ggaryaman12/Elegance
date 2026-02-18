@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  PLACED
+  CONFIRMED
+  PACKED
+  READY
+  DELIVERED
+  CANCELLED
+}
+
+model Product {
+  id             String         @id @default(uuid()) @db.Char(36)
+  slug           String         @unique @db.VarChar(120)
+  title          String         @db.VarChar(180)
+  description    String         @db.Text
+  details        String?        @db.Text
+  materialsCare  String?        @db.Text
+  deliveryPayment String?       @db.Text
+  basePricePaise Int
+  isActive       Boolean        @default(true)
+  isSponsored    Boolean        @default(false)
+  sponsoredSortOrder Int        @default(0)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  colors         ProductColor[]
+  images         ProductImage[]
+  orderItems     OrderItem[]
+  reels          Reel[]
+
+  @@index([isActive])
+  @@index([isSponsored, sponsoredSortOrder])
+}
+
+model Announcement {
+  id        String   @id @default(uuid()) @db.Char(36)
+  message   String   @db.VarChar(180)
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isActive, sortOrder])
+}
+
+model HomeBanner {
+  id        String   @id @default(uuid()) @db.Char(36)
+  title     String   @db.VarChar(120)
+  subtitle  String   @db.VarChar(240)
+  imageUrl  String?  @db.VarChar(1024)
+  videoUrl  String?  @db.VarChar(1024)
+  videoPosterUrl String? @db.VarChar(1024)
+  ctaText   String   @db.VarChar(60)
+  ctaHref   String   @db.VarChar(200)
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isActive, sortOrder])
+}
+
+model HomeSettings {
+  id            String   @id @default("singleton") @db.VarChar(32)
+  heroRotateMs  Int      @default(7000)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model ProductColor {
+  id          String   @id @default(uuid()) @db.Char(36)
+  productId   String   @db.Char(36)
+  colorName   String   @db.VarChar(80)
+  colorHex    String?  @db.VarChar(20)
+  isAvailable Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, colorName])
+  @@index([productId, sortOrder])
+}
+
+model ProductImage {
+  id        String   @id @default(uuid()) @db.Char(36)
+  productId String   @db.Char(36)
+  imageUrl  String   @db.VarChar(1024)
+  alt       String   @default("") @db.VarChar(255)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId, sortOrder])
+}
+
+model Reel {
+  id          String   @id @default(uuid()) @db.Char(36)
+  videoUrl    String   @db.VarChar(1024)
+  caption     String   @db.Text
+  productId   String?  @db.Char(36)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  product     Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  @@index([isPublished, createdAt])
+  @@index([productId, createdAt])
+}
+
+model Order {
+  id           String      @id @default(uuid()) @db.Char(36)
+  orderNumber  String      @unique @db.VarChar(40)
+  status       OrderStatus @default(PLACED)
+  customerName String      @db.VarChar(120)
+  phone        String      @db.VarChar(30)
+  address      String      @db.Text
+  notes        String      @db.Text
+  totalPaise   Int
+  createdAt    DateTime    @default(now())
+
+  items        OrderItem[]
+
+  @@index([status, createdAt])
+}
+
+model OrderItem {
+  id             String   @id @default(uuid()) @db.Char(36)
+  orderId        String   @db.Char(36)
+  productId      String   @db.Char(36)
+  productTitle   String   @db.VarChar(180)
+  colorName      String   @db.VarChar(80)
+  unitPricePaise Int
+  quantity       Int
+  lineTotalPaise Int
+
+  order          Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product        Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@index([orderId])
+  @@index([productId])
+}

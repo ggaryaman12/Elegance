@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#09090b"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="30%" cy="25%" r="55%">
+      <stop offset="0" stop-color="#60a5fa" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#spot)"/>
+  <g transform="translate(305,125)">
+    <path d="M85,228 C145,120 240,70 345,70 C450,70 545,120 605,228 L565,278 C525,210 445,170 345,170 C245,170 165,210 125,278 Z" fill="#0b1220" opacity="0.95"/>
+    <path d="M145,278 L270,175 L345,295 L420,175 L545,278 L545,720 C545,760 513,792 473,792 L217,792 C177,792 145,760 145,720 Z" fill="#09090b"/>
+    <path d="M270,175 L345,295 L420,175 L498,260 L416,322 L345,250 L274,322 L192,260 Z" fill="#0b1220" opacity="0.95"/>
+    <rect x="304" y="365" width="82" height="260" rx="18" fill="#0b1220" opacity="0.9"/>
+    <circle cx="345" cy="440" r="7" fill="#e2e8f0" opacity="0.9"/>
+    <circle cx="345" cy="500" r="7" fill="#e2e8f0" opacity="0.9"/>
+    <circle cx="345" cy="560" r="7" fill="#e2e8f0" opacity="0.9"/>
+  </g>
+  <text x="60" y="840" fill="#e5e7eb" opacity="0.7" font-family="ui-sans-serif, system-ui" font-size="28">Suit Placeholder</text>
+</svg>
+
