@@ -11,6 +11,8 @@ import { db } from "@/lib/prisma";
 import { LandingReelsStrip } from "@/components/reels/landing-reels-strip";
 import { HeroCarouselClient } from "@/components/site/hero-carousel-client";
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   const dbConfigured = Boolean(process.env.DATABASE_URL);
   return (
