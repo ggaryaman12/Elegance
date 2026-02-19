@@ -5,6 +5,7 @@ import * as React from "react";
 import { AnimateIn } from "@/components/site/animate-in";
 import { Card } from "@/components/ui/card";
 import { ReelsViewerModal } from "@/components/reels/reels-viewer-modal";
+import { formatINRFromPaise } from "@/lib/money";
 
 export function LandingReelsStrip({ reels }: { reels: any[] }) {
   const [open, setOpen] = React.useState(false);
@@ -34,12 +35,14 @@ export function LandingReelsStrip({ reels }: { reels: any[] }) {
                   />
                 </div>
                 <div className="p-4 text-sm">
-                  <div className="font-medium line-clamp-1">
-                    {r.caption || "New reel"}
-                  </div>
-                  <div className="mt-1 text-xs text-mutedForeground">
-                    Tap to open
-                  </div>
+                  <div className="font-medium line-clamp-1">{r.caption || "New reel"}</div>
+                  {r.product ? (
+                    <div className="mt-1 text-xs text-mutedForeground line-clamp-1">
+                      {r.product.title} · {formatINRFromPaise(r.product.basePricePaise)}
+                    </div>
+                  ) : (
+                    <div className="mt-1 text-xs text-mutedForeground">Tap to open</div>
+                  )}
                 </div>
               </Card>
             </button>
@@ -56,4 +59,3 @@ export function LandingReelsStrip({ reels }: { reels: any[] }) {
     </>
   );
 }
-

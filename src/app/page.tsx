@@ -375,10 +375,31 @@ async function LandingReels({ dbConfigured }: { dbConfigured: boolean }) {
     reels = await prisma.reel.findMany({
       where: { isPublished: true },
       orderBy: { createdAt: "desc" },
-      take: 3
+      take: 3,
+      include: {
+        product: {
+          include: {
+            images: { orderBy: { sortOrder: "asc" }, take: 4 },
+            colors: {
+              where: { isAvailable: true },
+              orderBy: { sortOrder: "asc" }
+            }
+          }
+        }
+      }
     });
   } catch {
-    return null;
+    try {
+      const prisma = db();
+      reels = await prisma.reel.findMany({
+        where: { isPublished: true },
+        orderBy: { createdAt: "desc" },
+        take: 3
+      });
+      reels = reels.map((r: any) => ({ ...r, product: null }));
+    } catch {
+      return null;
+    }
   }
   if (reels.length === 0) return null;
 
