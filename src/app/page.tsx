@@ -102,8 +102,9 @@ async function Hero({ dbConfigured }: { dbConfigured: boolean }) {
   const fallbackBanners = [
     {
       id: "fallback",
-      title: "Elegance by Neha",
-      subtitle: "Recently opened in Rajpura, Jammu · COD available",
+      title: "Ethnic World (Exclusive)",
+      subtitle:
+        "Main Road, Rajupura Mangotrian, Jammu · COD available · Call/WhatsApp: 9149776197",
       imageUrl: "/images/suits/suit-02.svg",
       videoUrl: null,
       videoPosterUrl: null,
@@ -140,7 +141,7 @@ async function Hero({ dbConfigured }: { dbConfigured: boolean }) {
           <AnimateIn className="w-full">
             <div className="max-w-2xl rounded-3xl border border-white/10 bg-background/10 p-6 text-white backdrop-blur-md sm:p-8">
               <div className="text-xs font-medium tracking-wide text-white/80">
-                SUITS MARKETPLACE · RAJPURA, JAMMU
+                ETHNIC WORLD (EXCLUSIVE) · JAMMU
               </div>
               <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">
                 {data[0].title}

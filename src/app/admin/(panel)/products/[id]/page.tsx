@@ -155,7 +155,7 @@ export default async function AdminProductDetailsPage({
             <input type="hidden" name="productId" value={product.id} />
             <CloudinaryUploadField
               name="imageUrl"
-              folder="elegance-by-neha/products"
+              folder="ethnic-world-exclusive/products"
               resourceType="image"
               label="Image"
             />

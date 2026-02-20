@@ -22,7 +22,7 @@ type CartApi = CartState & {
   clear: () => void;
 };
 
-const CART_KEY = "ebn_cart_v1";
+const CART_KEY = "ewe_cart_v1";
 
 function readCart(): CartState {
   if (typeof window === "undefined") return { items: [] };

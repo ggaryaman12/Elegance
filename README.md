@@ -1,6 +1,11 @@
-# Elegance by Neha — Marketplace (COD)
+# Ethnic World (Exclusive) — Marketplace (COD)
 
 Next.js storefront + admin, with a free MySQL-compatible database (TiDB Cloud Serverless) and free media hosting for reels (Cloudinary free tier).
+
+Store details:
+- Name: Ethnic World (Exclusive)
+- Address: Main Road, Rajupura Mangotrian, Jammu
+- Contact: 9149776197
 
 ## Local setup
 

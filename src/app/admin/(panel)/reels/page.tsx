@@ -54,7 +54,7 @@ async function AddReelCard() {
       <form action={createReel} className="mt-4 grid gap-4">
         <CloudinaryUploadField
           name="videoUrl"
-          folder="elegance-by-neha/reels"
+          folder="ethnic-world-exclusive/reels"
           resourceType="video"
           label="Video"
         />

@@ -243,21 +243,21 @@ export default async function AdminHomePage({
           <input type="hidden" name="id" value={editing?.id ?? ""} />
           <CloudinaryUploadField
             name="imageUrl"
-            folder="elegance-by-neha/home"
+            folder="ethnic-world-exclusive/home"
             resourceType="image"
             label="Banner image (optional)"
             initialUrl={editing?.imageUrl ?? undefined}
           />
           <CloudinaryUploadField
             name="videoUrl"
-            folder="elegance-by-neha/home"
+            folder="ethnic-world-exclusive/home"
             resourceType="video"
             label="Banner video (optional)"
             initialUrl={editing?.videoUrl ?? undefined}
           />
           <CloudinaryUploadField
             name="videoPosterUrl"
-            folder="elegance-by-neha/home"
+            folder="ethnic-world-exclusive/home"
             resourceType="image"
             label="Video poster (optional)"
             initialUrl={editing?.videoPosterUrl ?? undefined}
@@ -266,7 +266,12 @@ export default async function AdminHomePage({
             <label className="text-sm font-medium" htmlFor="title">
               Title
             </label>
-            <Input id="title" name="title" defaultValue={editing?.title ?? "New arrivals in Rajpura"} required />
+            <Input
+              id="title"
+              name="title"
+              defaultValue={editing?.title ?? "New arrivals in Jammu"}
+              required
+            />
           </div>
           <div className="grid gap-2">
             <label className="text-sm font-medium" htmlFor="subtitle">

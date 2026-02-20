@@ -7,8 +7,9 @@ import { AnnouncementBar } from "@/components/site/announcement-bar";
 import { MobileNav } from "@/components/site/mobile-nav";
 
 export const metadata: Metadata = {
-  title: "Elegance by Neha — Suits Marketplace",
-  description: "Order suits with COD in Rajpura, Jammu."
+  title: "Ethnic World (Exclusive) — Suits Marketplace",
+  description:
+    "Exclusive ready-made suits with COD in Jammu. Main Road, Rajupura Mangotrian, Jammu · Contact: 9149776197."
 };
 
 export const dynamic = "force-dynamic";

@@ -25,7 +25,7 @@ function makeOrderNumber() {
   const m = String(d.getMonth() + 1).padStart(2, "0");
   const day = String(d.getDate()).padStart(2, "0");
   const rand = Math.random().toString(16).slice(2, 6).toUpperCase();
-  return `EBN-${y}${m}${day}-${rand}`;
+  return `EWE-${y}${m}${day}-${rand}`;
 }
 
 export async function POST(req: Request) {

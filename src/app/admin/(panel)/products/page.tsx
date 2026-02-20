@@ -51,7 +51,7 @@ export default function AdminProductsPage() {
               </div>
               <CloudinaryUploadField
                 name="imageUrl"
-                folder="elegance-by-neha/products"
+                folder="ethnic-world-exclusive/products"
                 resourceType="image"
                 label="Cover image (optional)"
               />
